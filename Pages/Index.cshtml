@@ -5,6 +5,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to our Grocery Store</h1>
+    <p>This is a Grocery catalog, enjoy our application.</p>
+</div>
+
+<div class="row">
+    @foreach(var product in Model.Products)
+    {
+        <div class="col-sm-4">
+            <div>
+                <h3>@product.Name</h3>
+                <p>@product.Description</p>
+                <p><b>Price:</b> @product.Price.ToString("C")</p>
+                <p><b>Quantity in stock:</b> @product.Quantity</p>
+                <p>
+                    <a asp-page="/Products/Details" asp-route-id="@product.Id" class="btn btn-primary">View Details</a>
+				</p>
+            </div>
+        </div>
+    }
 </div>
